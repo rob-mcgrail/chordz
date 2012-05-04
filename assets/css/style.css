@@ -65,7 +65,7 @@ h1 {
 }
 
 #chords {
-  max-width: 800px;
+  max-width: 860px;
 }
 
 
@@ -78,16 +78,16 @@ h1 {
   padding: 20px;
   margin-left: 40px;
   margin-bottom: 40px;
-  max-width: 300px;
+  max-width: 350px;
   background-color: #eee;
   overflow: hidden;
 	width: 100%;
 }
 
 .name {
-  font-size: 90px;
+  font-size: 80px;
   color: #333;
-  margin-top: 10px;
+  margin-top: 18px;
   font-weight: bold;
   float: left;
 
