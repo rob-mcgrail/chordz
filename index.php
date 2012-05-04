@@ -23,8 +23,10 @@ $app->get('/', function () use ($app, $chords, $modes) {
     // a dumb selector
     $sequence = array();
     for($i = 1; $i <= 4; $i++){
-       $chord = $chords[array_rand($chords)] . $modes[array_rand($modes)];
-	     array_push($sequence, $chord);
+      $k = array_rand($chords);
+      $chord = $chords[$k] . $modes[array_rand($modes)];
+      unset($chords[$k]);
+      array_push($sequence, $chord);
     }
     return $app['twig']->render('main.twig', array('chords' => $sequence));
 });
