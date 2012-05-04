@@ -57,6 +57,7 @@ table {
 body {
   padding: 30px;
   font-family: Verdana, Sans;
+  max-width: 850px;
 }
 
 h1 {
@@ -75,7 +76,7 @@ footer {
 }
 
 #chords {
-  max-width: 850px;
+
 }
 
 
