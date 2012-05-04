@@ -15,6 +15,13 @@ $app['wisdom'] = $app->share(function() {
     'They got some chords. If anyone knows of some better site, plz email me too =p',
     ' I WOULD REALLY LIKE TO THE GET THE GUITAR TABS FOR THE SONGS IN THE MOVIE "MY CAPE OF MANY DREAMS". IT WOULD BE REALLY NICE.EVER SINCE I WAS KID I GREW UP WITH LISTENING TO THE GUITAR IN THIS MOVIE. I REALLY THINK YOU GUYS FOR HELPING.',
     'You can\'t always write a chord ugly enough to say what you want to say',
+    'Chords from the same key will sound good with each other. How do I know which chords are in a key?',
+    'i finally understand what the circle of fifths is for now',
+    'What I really want to know is...DO YOU HAVE ANY OTHER APPLICATIONS, INSIGHTS, OR REVELATIONS YOU CAN TELL US ABOUT THE CIRCLE OF FIFTHS? ',
+    'Well here\'s my question, I\'ve seen songs with chords outside of the key like in C major, an A7 chord?',
+    'Hey, How do I know which chords will work with each other?  Thanks!',
+    'If you took a music box apart, you\'d find that there\'s a tiny cylinder inside that is covered with tiny little bumps, or pins.',
+    'So, you want to learn about the musical device known as harmony. What is harmony? You should have listened to at least one song, and then realized the vocal(s), guitar, and bass were playing different notes. If you haven’t, then you’re not attentive',
   );
   return $wisdom[array_rand($wisdom)];
 });
