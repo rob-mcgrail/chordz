@@ -13,8 +13,7 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.class_path' => __DIR__.'/vendor/twig/lib',
 ));
 
-// music info
-
+// Music THEORY
 $chords = array('A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#');
 $modes = array('major' => '', 'minor' => 'm', 'seven' => '7');
 
@@ -22,15 +21,13 @@ $modes = array('major' => '', 'minor' => 'm', 'seven' => '7');
 // App
 $app->get('/', function () use ($app, $chords, $modes) {
     // a dumb selector
-    $indexes = array_rand($chords, 4);
     $sequence = array();
-    foreach( $indexes as $key => $value){
-       $chord = $chords[$value] . $modes[array_rand($modes)];
+    for($i = 1; $i <= 4; $i++){
+       $chord = $chords[array_rand($chords)] . $modes[array_rand($modes)];
 	     array_push($sequence, $chord);
     }
-    return $app['twig']->render('hello.twig', array('chords' => $sequence));
+    return $app['twig']->render('main.twig', array('chords' => $sequence));
 });
-
 
 
 // Final things
