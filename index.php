@@ -16,10 +16,15 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 // Music THEORY
 $chords = array('A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#');
 $modes = array('major' => '', 'minor' => 'm', 'seven' => '7');
+$wisdom = array(
+  'A chord in every pot, a chord on every plate!',
+  'Chords... inscrutable fingerful boxes. Pointlessly cruel.',
+  'Something else about chords why not?',
+);
 
 
 // App
-$app->get('/{num}', function ($num) use ($app, $chords, $modes) {
+$app->get('/{num}', function ($num) use ($app, $chords, $modes, $wisdom) {
     // a dumb selector
     $sequence = array();
     for($i = 1; $i <= $num; $i++){
@@ -28,7 +33,10 @@ $app->get('/{num}', function ($num) use ($app, $chords, $modes) {
       unset($chords[$k]); # prevent repeat chords...
       array_push($sequence, $chord);
     }
-    return $app['twig']->render('main.twig', array('chords' => $sequence));
+    return $app['twig']->render('main.twig', array(
+      'chords' => $sequence,
+      'wisdom' => $wisdom[array_rand($wisdom)],
+    ));
 })
 ->assert('num', '\d+') # ensure num is a number
 ->value('num', '4'); # num value for homepage

@@ -13,7 +13,7 @@
         <script src="http://jtab.tardate.com/javascripts/jtab.js" type="text/javascript"></script>
     </head>
     <body>
-        <h1>Chords</h1>
+        <h1 class="hidden">Chords</h1>
 
         <div id="chords">
             {% for chord in chords %}
@@ -23,5 +23,11 @@
                 </div>
             {% endfor %}
         </div>
+        <footer>
+          <p>{{ wisdom }}</p>
+              <div id="#github">
+                  <iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=robomc&amp;repo=chordz&amp;type=fork" allowtransparency="true" frameborder="0" scrolling="0" width="53px" height="20px"></iframe>
+              </div>
+        </footer>
     </body>
 </html>
