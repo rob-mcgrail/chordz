@@ -25,13 +25,13 @@ $app->get('/{num}', function ($num) use ($app, $chords, $modes) {
     for($i = 1; $i <= $num; $i++){
       $k = array_rand($chords);
       $chord = $chords[$k] . $modes[array_rand($modes)];
-      unset($chords[$k]);
+      unset($chords[$k]); # prevent repeat chords...
       array_push($sequence, $chord);
     }
     return $app['twig']->render('main.twig', array('chords' => $sequence));
 })
-->assert('num', '\d+')
-->value('num', '4');
+->assert('num', '\d+') # ensure num is a number
+->value('num', '4'); # num value for homepage
 
 
 
