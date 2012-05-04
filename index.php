@@ -1,8 +1,6 @@
 <?php
-
 require_once __DIR__.'/vendor/silex.phar';
 $app = new Silex\Application();
-
 
 // Templating with twig
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
@@ -10,39 +8,25 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.class_path' => __DIR__.'/vendor/twig/lib',
 ));
 
-
-// Music THEORY
-$chords = array('A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#');
-$modes = array('major' => '', 'minor' => 'm', 'seven' => '7');
-$wisdom = array(
-  'A chord in every pot, a chord on every plate!',
-  'Chords... inscrutable fingerful boxes. Pointlessly cruel.',
-  'Something else about chords why not?',
-);
+require_once __DIR__.'/services.php';
 
 
 
-// App
-$app->get('/{num}', function ($num) use ($app, $chords, $modes, $wisdom) {
-    // a dumb selector
-    $sequence = array();
-    for($i = 1; $i <= $num; $i++){
-      $k = array_rand($chords);
-      $chord = $chords[$k] . $modes[array_rand($modes)];
-      unset($chords[$k]); # prevent repeat chords...
-      array_push($sequence, $chord);
-    }
+// Application routes
+// http://silex.sensiolabs.org/doc/usage.html#dynamic-routing
+$app->get('/{num}', function ($num) use ($app) {
+    $chords = $app['chords']; // get protected closure so we can pass in $num later
     return $app['twig']->render('main.twig', array(
-      'chords' => $sequence,
-      'wisdom' => $wisdom[array_rand($wisdom)],
+      'chords' => $chords($num),
+      'wisdom' => $app['wisdom'],
     ));
 })
-->assert('num', '\d+') # ensure num is a number
+->assert('num', '\d0?') # ensure num is a number 0-10
 ->value('num', '4'); # num value for homepage
 
 
 
-// Final things
+
 $app['debug'] = true;
 $app->run();
 
