@@ -16,7 +16,7 @@ require_once __DIR__.'/wisdom.php';
 // http://silex.sensiolabs.org/doc/usage.html#dynamic-routing
 $app->get('/{num}', function ($num) use ($app) {
     $chords = new Chords();
-    $sequence = $chords->choose('C', $num);
+    $sequence = $chords->choose('G', $num);
     return $app['twig']->render('main.twig', array(
       'chords' => $sequence,
       'wisdom' => $app['wisdom'],
