@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Chords!</title>
+        <!-- recommended to avoid security warnings with SVG in IE8 -->
+        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+        <link type="text/css" rel="stylesheet" href="/assets/css/style.css"/>
+
+
+        <!-- mandatory script includes for jtab -->
+        <script src="http://jtab.tardate.com/javascripts/jquery.js" type="text/javascript"></script>
+        <script src="http://jtab.tardate.com/javascripts/lowpro.js" type="text/javascript"></script>
+        <script src="http://jtab.tardate.com/javascripts/raphael.js" type="text/javascript"></script>
+        <script src="http://jtab.tardate.com/javascripts/jtab.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <h1>Chords...</h1>
+
+        <div id="chords">
+            <div>
+                <div class="chord" id="a">
+                    <div class="name">{{chords[0]}}</div>
+                    <div class="jtab tab">{{chords[0]}}</div>
+                </div>
+                <div class="chord" id="b">
+                    <div class="name">{{chords[1]}}</div>
+                    <div class="jtab tab">{{chords[1]}}</div>
+                </div>
+            </div>
+            <div>
+                <div class="chord" id="c">
+                    <div class="name">{{chords[2]}}</div>
+                    <div class="jtab tab">{{chords[2]}}</div>
+                </div>
+                <div class="chord" id="d">
+                    <div class="name">{{chords[3]}}</div>
+                    <div class="jtab tab">{{chords[3]}}</div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
