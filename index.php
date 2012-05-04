@@ -19,17 +19,20 @@ $modes = array('major' => '', 'minor' => 'm', 'seven' => '7');
 
 
 // App
-$app->get('/', function () use ($app, $chords, $modes) {
+$app->get('/{num}', function ($num) use ($app, $chords, $modes) {
     // a dumb selector
     $sequence = array();
-    for($i = 1; $i <= 4; $i++){
+    for($i = 1; $i <= $num; $i++){
       $k = array_rand($chords);
       $chord = $chords[$k] . $modes[array_rand($modes)];
       unset($chords[$k]);
       array_push($sequence, $chord);
     }
     return $app['twig']->render('main.twig', array('chords' => $sequence));
-});
+})
+->assert('num', '\d+')
+->value('num', '4');
+
 
 
 // Final things
