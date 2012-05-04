@@ -8,16 +8,17 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.class_path' => __DIR__.'/vendor/twig/lib',
 ));
 
-require_once __DIR__.'/services.php';
-
+require_once __DIR__.'/chords.php';
+require_once __DIR__.'/wisdom.php';
 
 
 // Application routes
 // http://silex.sensiolabs.org/doc/usage.html#dynamic-routing
 $app->get('/{num}', function ($num) use ($app) {
-    $chords = $app['chords']; // get protected closure so we can pass in $num later
+    $chords = new Chords();
+    $sequence = $chords->choose('C', $num);
     return $app['twig']->render('main.twig', array(
-      'chords' => $chords($num),
+      'chords' => $sequence,
       'wisdom' => $app['wisdom'],
     ));
 })
@@ -25,6 +26,14 @@ $app->get('/{num}', function ($num) use ($app) {
 ->value('num', '4'); # num value for homepage
 
 
+$app->get('/{num}/{key}', function ($num, $key) use ($app) {
+    $chords = new Chords();
+    $sequence = $chords->choose($key, $num);
+    return $app['twig']->render('main.twig', array(
+      'chords' => $sequence,
+      'wisdom' => $app['wisdom'],
+    ));
+});
 
 
 $app['debug'] = true;
