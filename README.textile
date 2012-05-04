@@ -1,7 +1,7 @@
 h1. A tiny Silex app for getting more chords
 
 * Chose how many chords you want with @localhost/10@ @localhost/6@ etc. Defaults to 4.
-* Select your key with @localhost/10/G@ @localhost/6/Fsharp@
+* Select your key with @localhost/10/G@ @localhost/6/Fsharp@ @localhost/6/gsharp@ etc. Defaults to G
 * Flats not supported yet.
 
 Silex documentation: "http://silex.sensiolabs.org/documentation":http://silex.sensiolabs.org/documentation
