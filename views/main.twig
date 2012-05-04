@@ -17,26 +17,13 @@
         <h1>Chords</h1>
 
         <div id="chords">
-            <div>
-                <div class="chord" id="a">
-                    <div class="name">{{chords[0]}}</div>
-                    <div class="jtab tab">{{chords[0]}}</div>
-                </div>
-                <div class="chord" id="b">
-                    <div class="name">{{chords[1]}}</div>
-                    <div class="jtab tab">{{chords[1]}}</div>
-                </div>
+            {% for chord in chords %}
+
+            <div class="chord {{ cycle(['even', 'odd'], loop.index) }}">
+                <div class="name">{{chord}}</div>
+                <div class="jtab tab">{{chord}}</div>
             </div>
-            <div>
-                <div class="chord" id="c">
-                    <div class="name">{{chords[2]}}</div>
-                    <div class="jtab tab">{{chords[2]}}</div>
-                </div>
-                <div class="chord" id="d">
-                    <div class="name">{{chords[3]}}</div>
-                    <div class="jtab tab">{{chords[3]}}</div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </body>
 </html>

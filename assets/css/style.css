@@ -70,9 +70,9 @@ h1 {
 }
 
 
-#a, #c {float: left}
+.even {float: left}
 
-#b, #d {float: right}
+.odd {float: right}
 
 
 .chord {
