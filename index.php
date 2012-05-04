@@ -25,7 +25,8 @@ $app->get('/', function () use ($app, $chords, $modes) {
     $indexes = array_rand($chords, 4);
     $sequence = array();
     foreach( $indexes as $key => $value){
-	     array_push($sequence, $chords[$value]);
+       $chord = $chords[$value] . $modes[array_rand($modes)];
+	     array_push($sequence, $chord);
     }
     return $app['twig']->render('hello.twig', array('chords' => $sequence));
 });
