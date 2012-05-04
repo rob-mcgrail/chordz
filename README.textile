@@ -1,0 +1,7 @@
+h1. A tiny Silex app for getting more chords
+
+Silex documentation: "http://silex.sensiolabs.org/documentation":http://silex.sensiolabs.org/documentation
+
+Chord tab via: "https://github.com/tardate/jtab":https://github.com/tardate/jtab
+
+Templating via: "http://twig.sensiolabs.org/documentation":http://twig.sensiolabs.org/documentation
