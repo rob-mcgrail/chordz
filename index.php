@@ -22,7 +22,7 @@ $app->get('/{num}', function ($num) use ($app) {
       'wisdom' => $app['wisdom'],
     ));
 })
-->assert('num', '\d0?') # ensure num is a number 0-10
+->assert('num', '\d\d?') # ensure num is a number 0-10
 ->value('num', '4'); # num value for homepage
 
 
