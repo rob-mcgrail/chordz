@@ -1,0 +1,5 @@
+RewriteEngine On
+#Only use ReqriteBase if app is not in document root
+#RewriteBase /path/to/chordz
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L]
