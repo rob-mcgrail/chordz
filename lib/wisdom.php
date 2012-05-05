@@ -1,6 +1,11 @@
 <?php
+/*
 
-// http://silex.sensiolabs.org/doc/services.html#shared-services
+A Silex shared service which returns a random quote.
+http://silex.sensiolabs.org/doc/services.html#shared-services
+
+*/
+
 $app['wisdom'] = $app->share(function() {
   $wisdom = array(
     'A chord in every pot, a chord on every plate!',

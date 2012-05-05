@@ -16,8 +16,16 @@ require_once __DIR__.'/lib/wisdom.php';
 
 
 
-// Application routes
-// http://silex.sensiolabs.org/doc/usage.html#dynamic-routing
+/*
+
+Application routes
+
+For more information see:
+
+http://silex.sensiolabs.org/doc/usage.html#routing
+
+*/
+
 $app->get('/{num}', function ($num) use ($app) {
     $chords = new Chords('g');
     $sequence = $chords->random($num);
@@ -28,13 +36,10 @@ $app->get('/{num}', function ($num) use ($app) {
       'wisdom' => $app['wisdom'],
     ));
 })
-# ensure num is a number 0-99
 ->assert('num', '\d\d?')
-# num default value for empty routes
 ->value('num', '4');
 
 
-# Should be able to combine these two routes somehow...
 $app->get('/{num}/{key}', function ($num, $key) use ($app) {
     $chords = new Chords($key);
     $sequence = $chords->random($num);
@@ -45,11 +50,10 @@ $app->get('/{num}/{key}', function ($num, $key) use ($app) {
       'wisdom' => $app['wisdom'],
     ));
 })
-# ensure num is a number 0-99
 ->assert('num', '\d\d?');
 
 
-# permalink route
+// Permalink route
 $app->get('/song/{key}/{pattern}', function ($key, $pattern) use ($app) {
     $chords = new Chords($key);
     $sequence = $chords->byPattern($pattern);
