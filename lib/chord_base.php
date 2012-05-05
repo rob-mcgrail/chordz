@@ -38,7 +38,7 @@ Algorythms can access the current key via $this->key.
     // if it is, update key var, and remove from pattern
     if (strpos($pattern, '/')) {
       $pattern_parts = explode('/', $pattern);
-      $this->key = $pattern_parts[0];
+      $this->key = $this->cleanKey($pattern_parts[0]);
       $pattern = $pattern_parts[1];
     }
     $sequence = array();
@@ -71,13 +71,14 @@ Algorythms can access the current key via $this->key.
     $this->saveToPattern($parsed_note);
     // get transposed note
     $note = $notes[$k];
-    return $note . $parsed_note['mode'];
+    // convert seven to 7 for display on the site
+    $note = $note . str_replace('seven', '7', $parsed_note['mode']);
+    return $note;
   }
 
   public function parseNote($note) {
     preg_match('/(\d+)(\w+)?/', $note, $matches);
-    // Revert seven -> 7
-    $matches['2'] = str_replace('seven', '7', $matches[2]);
+#    $matches['2'] = str_replace('seven', '7', $matches[2]);
     return array('note' => $matches[1], 'mode' => $matches[2]);
   }
 
