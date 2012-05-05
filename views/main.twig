@@ -5,6 +5,7 @@
         <!-- recommended to avoid security warnings with SVG in IE8 -->
         <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
         <!-- styles -->
+        <link type="text/css" rel="stylesheet" href="/assets/css/presize.css"/>
         <link type="text/css" rel="stylesheet" href="/assets/css/style.css"/>
         <!-- mandatory script includes for jtab -->
         <script src="/assets/js/jquery.js" type="text/javascript"></script>
@@ -30,10 +31,12 @@
 
         <div id="chords">
             {% for chord in chords %}
-                <div class="chord {{ cycle(['odd', 'even'], loop.index) }}">
-                    <div class="name">{{chord}}</div>
-                    <div class="jtab tab">{{chord}}</div>
+            <div class="chord {{ cycle(['odd', 'even'], loop.index) }}">
+                <div class="name">{{chord}}</div>
+                <div class="tab jtab">
+                  {{chord}}
                 </div>
+            </div>
             {% endfor %}
         </div>
         <footer>
