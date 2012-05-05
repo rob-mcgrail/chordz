@@ -1,5 +1,11 @@
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/javascript "access plus 1 year"
+  ExpiresByType application/x-javascript "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+</IfModule>
+
 RewriteEngine On
-#Only use ReqriteBase if app is not in document root
-#RewriteBase /path/to/chordz
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.php [L]

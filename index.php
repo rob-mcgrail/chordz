@@ -45,6 +45,7 @@ $app->get('/{num}/{key}', function ($num, $key) use ($app) {
     $chords = new Chords($key);
     $sequence = $chords->random($num);
     $permalink = $app['request']->getHttpHost() . '/song/' . $chords->pattern;
+
     return $app['twig']->render('main.twig', array(
       'chords' => $sequence,
       'permalink' => $permalink,
@@ -59,6 +60,7 @@ $app->get('/song/{key}/{pattern}', function ($key, $pattern) use ($app) {
     $chords = new Chords($key);
     $sequence = $chords->byPattern($pattern);
     $permalink = $app['request']->getHttpHost() . '/song/' . $chords->pattern;
+
     return $app['twig']->render('main.twig', array(
       'chords' => $sequence,
       'permalink' => $permalink,

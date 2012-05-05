@@ -48,6 +48,14 @@ table {
 }
 
 
+/* prevents undue dom jitter from jtab */
+.jtab {
+  height:118px;
+}
+.jtab.chordonly {
+  height:118px;
+}
+
 
 /* Styles */
 
