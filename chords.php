@@ -24,13 +24,13 @@ class ChordHelper {
 
 
 class Chords extends ChordHelper {
-  public $candidates = array('0', '0', '5', '5', '5', '5', '7', '7', '7', '7seven', 6, '4m', '4m', '9m', '2m', '4seven');
+  public $candidates = array('0', '0', '5', '5', '5', '5', '7', '7', '7', '7seven', '2m', '4m', '9m', '9m', '4seven');
 
   public function choose($key, $num) {
     $key = strtoupper($key);
     $key = str_replace('SHARP', '#', $key);
 
-    $sequence = array($this->getChord($key, 0));
+    $sequence = array($this->getChord($key, '0'));
     for($i = 2; $i <= $num; $i++) {
       $note = $this->candidates[array_rand($this->candidates)];
       array_push($sequence, $this->getChord($key, $note));
