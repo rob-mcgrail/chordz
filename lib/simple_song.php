@@ -1,5 +1,5 @@
 <?php
-class Chords extends ChordBase {
+class SimpleSong extends ChordBase {
 /*
 
 Simple random chord-getter example.
@@ -16,7 +16,7 @@ slected from the $this->candidates array.
     '4m', '9m', '9m', '4seven',
   );
 
-  public function random($num) {
+  public function chords($num) {
     // Always start sequence with root chord
     $sequence = array($this->getChord('0'));
     for($i = 2; $i <= $num; $i++) {

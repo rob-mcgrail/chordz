@@ -9,12 +9,8 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 ));
 
 require_once __DIR__.'/lib/chord_base.php';
-require_once __DIR__.'/lib/chords.php';
+require_once __DIR__.'/lib/simple_song.php';
 require_once __DIR__.'/lib/wisdom.php';
-
-
-
-
 
 /*
 
@@ -28,9 +24,10 @@ http://silex.sensiolabs.org/doc/usage.html#routing
 
 $app->get('/{num}', function ($num) use ($app) {
     $key = 'g';
-    $chords = new Chords($key);
-    $sequence = $chords->random($num);
-    $permalink = $app['request']->getHttpHost() . '/song/' . $chords->pattern;
+    $song = new SimpleSong($key);
+    $sequence = $song->chords($num);
+    $permalink = $app['request']->getHttpHost() . '/song/' . $song->pattern;
+
     return $app['twig']->render('main.twig', array(
       'chords' => $sequence,
       'permalink' => $permalink,
@@ -42,9 +39,9 @@ $app->get('/{num}', function ($num) use ($app) {
 
 
 $app->get('/{num}/{key}', function ($num, $key) use ($app) {
-    $chords = new Chords($key);
-    $sequence = $chords->random($num);
-    $permalink = $app['request']->getHttpHost() . '/song/' . $chords->pattern;
+    $song = new SimpleSong($key);
+    $sequence = $song->chords($num);
+    $permalink = $app['request']->getHttpHost() . '/song/' . $song->pattern;
 
     return $app['twig']->render('main.twig', array(
       'chords' => $sequence,
@@ -57,9 +54,9 @@ $app->get('/{num}/{key}', function ($num, $key) use ($app) {
 
 // Permalink route
 $app->get('/song/{key}/{pattern}', function ($key, $pattern) use ($app) {
-    $chords = new Chords($key);
-    $sequence = $chords->byPattern($pattern);
-    $permalink = $app['request']->getHttpHost() . '/song/' . $chords->pattern;
+    $song = new SimpleSong($key);
+    $sequence = $song->byPattern($pattern);
+    $permalink = $app['request']->getHttpHost() . '/song/' . $song->pattern;
 
     return $app['twig']->render('main.twig', array(
       'chords' => $sequence,
