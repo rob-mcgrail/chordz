@@ -67,7 +67,7 @@ $app->get('/song/{key}/{pattern}', function ($key, $pattern) use ($app) {
 
 
 
-$app['debug'] = true;
+#$app['debug'] = true;
 $app->run();
 
 ?>
