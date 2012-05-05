@@ -63,7 +63,8 @@ Algorythms can access the current key via $this->key.
 
   public function getChord($note) {
     // get transpose ammount by index of note
-    $offset = array_search($this->cleanKey(), $this->notes, TRUE);
+    // uses unescapeKey() to get C# instead of Csharp
+    $offset = array_search($this->unescapeKey(), $this->notes, TRUE);
     // make sure we have plenty of notes to handle offset
     $notes = array_merge($this->notes, $this->notes);
     $parsed_note = $this->parseNote($note);
@@ -84,7 +85,7 @@ Algorythms can access the current key via $this->key.
     return array('note' => $matches[1], 'mode' => $matches[2]);
   }
 
-  public function cleanKey() {
+  public function unescapeKey() {
     $key = strtoupper($this->key);
     return str_replace('SHARP', '#', $key);
   }
