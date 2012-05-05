@@ -24,10 +24,15 @@
             {% endfor %}
         </div>
         <footer>
-          <p>{{ wisdom }}</p>
-              <div id="#github">
-                  <iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=robomc&amp;repo=chordz&amp;type=fork" allowtransparency="true" frameborder="0" scrolling="0" width="53px" height="20px"></iframe>
-              </div>
+            <p>
+                <span class="wisdom">{{ wisdom }}</span>
+            </p>
+            <p>
+                <span class="permalink"> Permalink: <a href="http://{{ permalink }}">{{ permalink }}</a></span>
+            </p>
+            <div id="#github">
+                <iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=robomc&amp;repo=chordz&amp;type=fork" allowtransparency="true" frameborder="0" scrolling="0" width="53px" height="20px"></iframe>
+            </div>
         </footer>
     </body>
 </html>

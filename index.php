@@ -19,10 +19,12 @@ require_once __DIR__.'/lib/wisdom.php';
 // Application routes
 // http://silex.sensiolabs.org/doc/usage.html#dynamic-routing
 $app->get('/{num}', function ($num) use ($app) {
-    $chords = new Chords();
-    $sequence = $chords->random('G', $num);
+    $chords = new Chords('g');
+    $sequence = $chords->random($num);
+    $permalink = $app['request']->getHttpHost() . '/song/' . $chords->pattern;
     return $app['twig']->render('main.twig', array(
       'chords' => $sequence,
+      'permalink' => $permalink,
       'wisdom' => $app['wisdom'],
     ));
 })
@@ -34,10 +36,12 @@ $app->get('/{num}', function ($num) use ($app) {
 
 # Should be able to combine these two routes somehow...
 $app->get('/{num}/{key}', function ($num, $key) use ($app) {
-    $chords = new Chords();
-    $sequence = $chords->random($key, $num);
+    $chords = new Chords($key);
+    $sequence = $chords->random($num);
+    $permalink = $app['request']->getHttpHost() . '/song/' . $chords->pattern;
     return $app['twig']->render('main.twig', array(
       'chords' => $sequence,
+      'permalink' => $permalink,
       'wisdom' => $app['wisdom'],
     ));
 })
@@ -45,15 +49,17 @@ $app->get('/{num}/{key}', function ($num, $key) use ($app) {
 ->assert('num', '\d\d?');
 
 
-## permalink
-#$app->get('/song/{key}/{pattern}', function ($key, $pattern) use ($app) {
-#    $chords = new Chords();
-##    $sequence = $chords->byPattern($key, $num);
-#    return $app['twig']->render('main.twig', array(
-#      'chords' => $sequence,
-#      'wisdom' => $app['wisdom'],
-#    ));
-#})
+# permalink route
+$app->get('/song/{key}/{pattern}', function ($key, $pattern) use ($app) {
+    $chords = new Chords($key);
+    $sequence = $chords->byPattern($pattern);
+    $permalink = $app['request']->getHttpHost() . '/song/' . $chords->pattern;
+    return $app['twig']->render('main.twig', array(
+      'chords' => $sequence,
+      'permalink' => $permalink,
+      'wisdom' => $app['wisdom'],
+    ));
+});
 
 
 

@@ -6,20 +6,15 @@ class Chords extends ChordBase {
     '4m', '9m', '9m', '4seven',
   );
 
-  public function random($key, $num) {
-    $key = $this->cleanKey($key);
+  public function random($num) {
     # Start sequence with root
-    $sequence = array($this->getChord($key, '0'));
+    $sequence = array($this->getChord('0'));
     for($i = 2; $i <= $num; $i++) {
       # Append random chords to sequence
       $note = $this->candidates[array_rand($this->candidates)];
-      array_push($sequence, $this->getChord($key, $note));
+      array_push($sequence, $this->getChord($note));
     }
   return $sequence;
   }
-
-#  public function byPattern($key, $num) {
-#    $key = $this->cleanKey($key);
-#  }
 }
 ?>
