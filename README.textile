@@ -16,3 +16,9 @@ Silex documentation: "http://silex.sensiolabs.org/documentation":http://silex.se
 Chord tab via: "https://github.com/tardate/jtab":https://github.com/tardate/jtab
 
 Templating via: "http://twig.sensiolabs.org/documentation":http://twig.sensiolabs.org/documentation
+
+h2. Deployment notes
+
+This app uses .phar packages, which can cause issues depending on your php config.
+
+If you get a whitescreen of death, be sure to "read the Silex 'pitfalls' advice":http://silex.sensiolabs.org/doc/usage.html#pitfalls
