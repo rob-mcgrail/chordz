@@ -27,7 +27,8 @@ http://silex.sensiolabs.org/doc/usage.html#routing
 */
 
 $app->get('/{num}', function ($num) use ($app) {
-    $chords = new Chords('g');
+    $key = 'g';
+    $chords = new Chords($key);
     $sequence = $chords->random($num);
     $permalink = $app['request']->getHttpHost() . '/song/' . $chords->pattern;
     return $app['twig']->render('main.twig', array(
@@ -64,7 +65,6 @@ $app->get('/song/{key}/{pattern}', function ($key, $pattern) use ($app) {
       'wisdom' => $app['wisdom'],
     ));
 });
-
 
 
 
