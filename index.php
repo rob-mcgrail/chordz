@@ -8,8 +8,9 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.class_path' => __DIR__.'/vendor/twig/lib',
 ));
 
-require_once __DIR__.'/chords.php';
-require_once __DIR__.'/wisdom.php';
+require_once __DIR__.'/lib/chord_helper.php';
+require_once __DIR__.'/lib/chords.php';
+require_once __DIR__.'/lib/wisdom.php';
 
 
 // Application routes
