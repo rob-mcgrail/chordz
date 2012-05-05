@@ -15,12 +15,13 @@
           var _gaq = _gaq || [];
           _gaq.push(['_setAccount', 'UA-31446936-1']);
           _gaq.push(['_trackPageview']);
-
           (function() {
             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
           })();
+          _gaq.push(['_setCustomVar', 1, 'Key', '{{ chords[0] }}']);
+          _gaq.push(['_setCustomVar', 2, 'Number', '{{ chords|length }}']);
         </script>
     </head>
     <body>
@@ -39,7 +40,7 @@
                 <span class="wisdom">{{ wisdom }}</span>
             </p>
             <p>
-                <span class="permalink"> Permalink: <a href="http://{{ permalink }}">{{ permalink }}</a></span>
+                <span class="permalink"> Permalink: <a onclick="_gaq.push(['_trackEvent', 'permalink', '{{ chords[0] }} - {{ chords|length }}']);" href="http://{{ permalink }}">{{ permalink }}</a></span>
             </p>
             <div id="#github">
                 <iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=robomc&amp;repo=chordz&amp;type=fork" allowtransparency="true" frameborder="0" scrolling="0" width="53px" height="20px"></iframe>
