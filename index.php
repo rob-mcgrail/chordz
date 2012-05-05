@@ -13,6 +13,9 @@ require_once __DIR__.'/lib/chords.php';
 require_once __DIR__.'/lib/wisdom.php';
 
 
+
+
+
 // Application routes
 // http://silex.sensiolabs.org/doc/usage.html#dynamic-routing
 $app->get('/{num}', function ($num) use ($app) {
@@ -23,10 +26,13 @@ $app->get('/{num}', function ($num) use ($app) {
       'wisdom' => $app['wisdom'],
     ));
 })
-->assert('num', '\d\d?') # ensure num is a number 0-10
-->value('num', '4'); # num value for homepage
+# ensure num is a number 0-99
+->assert('num', '\d\d?')
+# num default value for empty routes
+->value('num', '4');
 
 
+# Should be able to combine these two routes somehow...
 $app->get('/{num}/{key}', function ($num, $key) use ($app) {
     $chords = new Chords();
     $sequence = $chords->choose($key, $num);
@@ -34,7 +40,12 @@ $app->get('/{num}/{key}', function ($num, $key) use ($app) {
       'chords' => $sequence,
       'wisdom' => $app['wisdom'],
     ));
-});
+})
+# ensure num is a number 0-99
+->assert('num', '\d\d?');
+
+
+
 
 
 $app['debug'] = true;
