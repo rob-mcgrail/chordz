@@ -5,15 +5,17 @@ class ChordBase {
 Base class for all chord getters.
 
 Custom chord algorythms should inherit this class,
-and implement a method returns and array of chords.
+and implement a method returning an array of chords.
 
-Every chord in the array should be created via the
+Every chord in the array must be created via the
 getChord() method below. getChord() takes a numerical
 string representation of a chord with a mode suffix.
 
 Examples: "0", "5seven", "8m", "7sus" etc.
 
-Note that calls to getChord() also append that chord to
+And then returns the appropriate string for the web interface.
+
+getChord() also append that chord to
 $this->pattern, which is used to generate permalinks for your
 chord sequence. Don't call getChord() unless you are adding a
 chord to your final array, or your permalink will be broken.
