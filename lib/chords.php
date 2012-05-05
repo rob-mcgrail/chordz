@@ -6,7 +6,7 @@ class Chords extends ChordHelper {
     '4m', '9m', '9m', '4seven',
   );
 
-  public function choose($key, $num) {
+  public function random($key, $num) {
     $key = $this->cleanKey($key);
     # Start sequence with root
     $sequence = array($this->getChord($key, '0'));

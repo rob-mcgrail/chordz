@@ -20,7 +20,7 @@ require_once __DIR__.'/lib/wisdom.php';
 // http://silex.sensiolabs.org/doc/usage.html#dynamic-routing
 $app->get('/{num}', function ($num) use ($app) {
     $chords = new Chords();
-    $sequence = $chords->choose('G', $num);
+    $sequence = $chords->random('G', $num);
     return $app['twig']->render('main.twig', array(
       'chords' => $sequence,
       'wisdom' => $app['wisdom'],
@@ -35,7 +35,7 @@ $app->get('/{num}', function ($num) use ($app) {
 # Should be able to combine these two routes somehow...
 $app->get('/{num}/{key}', function ($num, $key) use ($app) {
     $chords = new Chords();
-    $sequence = $chords->choose($key, $num);
+    $sequence = $chords->random($key, $num);
     return $app['twig']->render('main.twig', array(
       'chords' => $sequence,
       'wisdom' => $app['wisdom'],
@@ -44,6 +44,16 @@ $app->get('/{num}/{key}', function ($num, $key) use ($app) {
 # ensure num is a number 0-99
 ->assert('num', '\d\d?');
 
+
+# permalink
+$app->get('/song/{key}/{pattern}', function ($key, $pattern) use ($app) {
+    $chords = new Chords();
+#    $sequence = $chords->byPattern($key, $num);
+    return $app['twig']->render('main.twig', array(
+      'chords' => $sequence,
+      'wisdom' => $app['wisdom'],
+    ));
+})
 
 
 
