@@ -1,5 +1,5 @@
 <?php
-class ChordHelper {
+class ChordBase {
   public $notes = array(
     'C', 'C#', 'D', 'D#', 'E', 'F',
     'F#', 'G', 'G#', 'A', 'A#', 'B',

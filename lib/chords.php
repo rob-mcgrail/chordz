@@ -1,5 +1,5 @@
 <?php
-class Chords extends ChordHelper {
+class Chords extends ChordBase {
   public $candidates = array(
     '0', '0', '5', '5', '5', '5',
     '7', '7', '7', '7seven', '2m',
@@ -17,5 +17,9 @@ class Chords extends ChordHelper {
     }
   return $sequence;
   }
+
+#  public function byPattern($key, $num) {
+#    $key = $this->cleanKey($key);
+#  }
 }
 ?>

@@ -8,7 +8,7 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.class_path' => __DIR__.'/vendor/twig/lib',
 ));
 
-require_once __DIR__.'/lib/chord_helper.php';
+require_once __DIR__.'/lib/chord_base.php';
 require_once __DIR__.'/lib/chords.php';
 require_once __DIR__.'/lib/wisdom.php';
 
@@ -45,15 +45,15 @@ $app->get('/{num}/{key}', function ($num, $key) use ($app) {
 ->assert('num', '\d\d?');
 
 
-# permalink
-$app->get('/song/{key}/{pattern}', function ($key, $pattern) use ($app) {
-    $chords = new Chords();
-#    $sequence = $chords->byPattern($key, $num);
-    return $app['twig']->render('main.twig', array(
-      'chords' => $sequence,
-      'wisdom' => $app['wisdom'],
-    ));
-})
+## permalink
+#$app->get('/song/{key}/{pattern}', function ($key, $pattern) use ($app) {
+#    $chords = new Chords();
+##    $sequence = $chords->byPattern($key, $num);
+#    return $app['twig']->render('main.twig', array(
+#      'chords' => $sequence,
+#      'wisdom' => $app['wisdom'],
+#    ));
+#})
 
 
 
