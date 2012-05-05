@@ -32,7 +32,7 @@ Algorythms can access the current key via $this->key.
   public $pattern = '';
 
   function __construct($key) {
-    $this->key = $this->cleanKey($key);
+    $this->key = $key;
   }
 
   public function byPattern($pattern) {
@@ -40,7 +40,7 @@ Algorythms can access the current key via $this->key.
     // if it is, update key var, and remove from pattern
     if (strpos($pattern, '/')) {
       $pattern_parts = explode('/', $pattern);
-      $this->key = $this->cleanKey($pattern_parts[0]);
+      $this->key = $pattern_parts[0];
       $pattern = $pattern_parts[1];
     }
     $sequence = array();
@@ -63,7 +63,7 @@ Algorythms can access the current key via $this->key.
 
   public function getChord($note) {
     // get transpose ammount by index of note
-    $offset = array_search($this->key, $this->notes, TRUE);
+    $offset = array_search($this->cleanKey(), $this->notes, TRUE);
     // make sure we have plenty of notes to handle offset
     $notes = array_merge($this->notes, $this->notes);
     $parsed_note = $this->parseNote($note);
@@ -84,8 +84,8 @@ Algorythms can access the current key via $this->key.
     return array('note' => $matches[1], 'mode' => $matches[2]);
   }
 
-  public function cleanKey($key) {
-    $key = strtoupper($key);
+  public function cleanKey() {
+    $key = strtoupper($this->key);
     return str_replace('SHARP', '#', $key);
   }
 }
